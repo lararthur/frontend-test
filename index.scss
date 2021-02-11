@@ -1,0 +1,11 @@
+// tryed to use "@use" instead of "@import", but codesandbox couldn't find the rule :(
+@import "styles/helpers";
+@import "styles/introduction";
+
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: $white;
+}
