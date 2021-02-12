@@ -1,0 +1,22 @@
+.filters {
+  color: $darkgrey;
+}
+
+.filter {
+  padding: 25px 0;
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &__image {
+    width: 100px;
+  }
+  
+  &__label {
+    display: block;
+    padding: 10px 0;
+  }
+}

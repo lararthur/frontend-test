@@ -1,6 +1,7 @@
 // tryed to use "@use" instead of "@import", but codesandbox couldn't find the rule :(
 @import "styles/helpers";
 @import "styles/introduction";
+@import "styles/filters";
 
 body {
   font-size: 16px;

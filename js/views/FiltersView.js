@@ -13,14 +13,17 @@ class FiltersView {
     filters.map((item, index) => {
     
       const divEl = document.createElement("div");
+      divEl.setAttribute("class", "filter");
     
       const imgEl = document.createElement("img");
+      imgEl.setAttribute("class", "filter__image");
       imgEl.setAttribute("src", item.image);
       imgEl.setAttribute("alt", item.name);
     
       divEl.appendChild(imgEl);
     
       const labelEl = document.createElement("label");
+      labelEl.setAttribute("class", "filter__label");
       labelEl.innerText = `${index + 1}. ${item.label}`;
     
       divEl.appendChild(labelEl);
