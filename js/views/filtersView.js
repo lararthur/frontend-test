@@ -6,10 +6,10 @@ class filtersView {
   renderFilters() {
 
     const filtersForm = document.querySelector("#filtersForm");
-    
+    const filters = controllerInstance.getFilters();
     let filtersOptions = [];
     
-    controllerInstance.filters.map((item, index) => {
+    filters.map((item, index) => {
     
       const divEl = document.createElement("div");
     

@@ -9,63 +9,67 @@ const modelInstace = new Model();
 class controller {
   constructor(products) {
     this.products = products;
+
+    this.filters = [
+      {
+        name: "sun",
+        label: "Set the amount of sunlight your plant will get",
+        image: sunImg,
+        options: [
+          {
+            value: "no",
+            text: "No sunlight",
+          },
+          {
+            value: "low",
+            text: "Low sunlight",
+          },
+          {
+            value: "high",
+            text: "High sunlight",
+          },
+        ]
+      },
+      {
+        name: "water",
+        label: "How often do you want to water your plant?",
+        image: waterImg,
+        options: [
+          {
+            value: "rarely",
+            text: "Rarely",
+          },
+          {
+            value: "regularly",
+            text: "Regularly",
+          },
+          {
+            value: "daily",
+            text: "Daily",
+          },
+        ]
+      },
+      {
+        name: "pets",
+        label: "Do you have pets? Do they chew plants?",
+        image: dogImg,
+        options: [
+          {
+            value: true,
+            text: "Yes",
+          },
+          {
+            value: false,
+            text: "No/They don't care",
+          },
+        ]
+      },
+    ];
   }
 
-  filters = [
-    {
-      name: "sun",
-      label: "Set the amount of sunlight your plant will get",
-      image: sunImg,
-      options: [
-        {
-          value: "no",
-          text: "No sunlight",
-        },
-        {
-          value: "low",
-          text: "Low sunlight",
-        },
-        {
-          value: "high",
-          text: "High sunlight",
-        },
-      ]
-    },
-    {
-      name: "water",
-      label: "How often do you want to water your plant?",
-      image: waterImg,
-      options: [
-        {
-          value: "rarely",
-          text: "Rarely",
-        },
-        {
-          value: "regularly",
-          text: "Regularly",
-        },
-        {
-          value: "daily",
-          text: "Daily",
-        },
-      ]
-    },
-    {
-      name: "pets",
-      label: "Do you have pets? Do they chew plants?",
-      image: dogImg,
-      options: [
-        {
-          value: true,
-          text: "Yes",
-        },
-        {
-          value: false,
-          text: "No/They don't care",
-        },
-      ]
-    },
-  ];
+  getFilters() {
+    return this.filters;
+  }
   
   changeValue(name, value) {
     this[name] = value;
