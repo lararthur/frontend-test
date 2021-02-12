@@ -39,6 +39,13 @@
   &__price {
     margin: 0;
   }
+  &__tag {
+    height: 17px;
+    padding: 0 4px;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
 }
 
 .empty {
