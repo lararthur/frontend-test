@@ -11,7 +11,18 @@ class ProductsView {
   }
 
   renderProducts() {
+    /* if(this.products.length === 0 || this.products.error) {
+      document.querySelector("#results").setAttribute("class", "hidden");
+      document.querySelector("#noResults").setAttribute("class", "empty");
+      return;
+    } */
+
+    document.querySelector("#noResults").setAttribute("class", "hidden");
+    document.querySelector("#results").setAttribute("class", "results");
+
     console.log(this.products);
+
+
   }
 
 }

@@ -2,6 +2,18 @@
   background: $lightergrey;
 }
 
+.results {
+  color: $darkgreen;
+  &__art {
+    width: 150px;
+  }
+  &__title {
+    font-size: 40px;
+    color: $black;
+    width: 250px;
+  }
+}
+
 .empty {
   color: $lightgrey;
   display: flex;
