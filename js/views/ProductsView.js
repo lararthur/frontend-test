@@ -13,7 +13,7 @@ class ProductsView {
   renderProducts() {
     /* if(this.products.length === 0 || this.products.error) {
       document.querySelector("#results").setAttribute("class", "hidden");
-      document.querySelector("#noResults").setAttribute("class", "empty");
+      document.querySelector("#noResults").setAttribute("class", "empty wrapper");
       return;
     } */
 

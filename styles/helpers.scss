@@ -25,6 +25,21 @@ $lightergrey: #f6f6f6;
   display: block;
   padding: 10px 0;
 }
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  color: $darkgreen;
+  border: 1px solid $darkgreen;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 23px;
+
+  &__icon {
+    padding: 10px;
+  }
+}
 
 .select {
   position: relative;

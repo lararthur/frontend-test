@@ -4,6 +4,7 @@
 
 .results {
   color: $darkgreen;
+
   &__art {
     width: 150px;
   }
@@ -11,6 +12,32 @@
     font-size: 40px;
     color: $black;
     width: 250px;
+    margin: 20px 0 0;
+  }
+  &__picks {
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+    padding: 0 20px;
+  }
+}
+
+.product {
+  background: $white;
+  border-radius: 5px;
+  margin: 0 8px;
+  padding: 20px;
+  font-weight: 700;
+
+  &__image {
+    width: 230px;
+  }
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__price {
+    margin: 0;
   }
 }
 
