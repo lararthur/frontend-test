@@ -80,6 +80,7 @@ class Controller {
   }
   
   changeValue(name, value) {
+    console.log(name, value);
     this[name] = value;
 
     if((this.sun && this.sun !== '0') && (this.water && this.water !== '0') && (this.pets && this.pets !== '0')) {

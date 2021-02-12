@@ -18,3 +18,58 @@ $lightgrey: #a9a9a9;
 .hidden {
   display: none;
 }
+
+.label {
+  display: block;
+  padding: 10px 0;
+}
+
+.select {
+  position: relative;
+  
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__text {
+    border: 1px solid $darkgrey;
+    padding: 15px 20px;
+    border-radius: 25px;
+  }
+  &__options {
+    display: none;
+    position: absolute;
+    top: 49px;
+    left: 0;
+    right: 0;
+
+    background: $white;
+    border: 1px solid $darkgrey;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+  }
+  &__option {
+    padding: 15px 20px;
+    margin: 0;
+    &--selected {
+      background: $lightgreen;
+      color: $white;
+    }
+  }
+
+  &--opened {
+
+    .select {
+      &__text {
+        border-radius: 20px 20px 0 0;
+        border-bottom: none;
+      }
+      &__options {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  
+}

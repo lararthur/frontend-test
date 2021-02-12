@@ -26,15 +26,18 @@ class FiltersView {
     
       // LABEL
       const labelEl = document.createElement("label");
-      labelEl.setAttribute("class", "filter__label");
+      labelEl.setAttribute("class", "label");
       labelEl.innerText = `${index + 1}. ${item.label}`;
     
       divEl.appendChild(labelEl);
     
       // SELECT (HIDDEN)
       const selectEl = document.createElement("select");
-      selectEl.setAttribute("class", "hidden")
-      selectEl.addEventListener("change", (e) => this.controllerInstance.changeValue(item.name, e.target.value));
+      selectEl.setAttribute("name", item.name);
+      selectEl.setAttribute("class", "hidden");
+      selectEl.addEventListener("change", (e) => {
+        this.controllerInstance.changeValue(e.target.name, e.target.value)
+      });
 
       const defaultOptionEl = document.createElement("option");
       defaultOptionEl.setAttribute("value", 0);
@@ -48,6 +51,13 @@ class FiltersView {
       customSelectTextEl.innerText = "Select...";
       customSelectEl.appendChild(customSelectTextEl);
       const customOptionsEl = document.createElement("div");
+
+      // **CUSTOM** SELECT STYLING
+      let selectIsOpened = false;
+
+      customSelectEl.setAttribute("class", "select");
+      customSelectTextEl.setAttribute("class", "select__text");
+      customOptionsEl.setAttribute("class", "select__options");
     
       item.options.map(option => {
         // SELECT OPTIONS
@@ -66,10 +76,30 @@ class FiltersView {
           selectEl.dispatchEvent(new Event('change'));
         });
 
+        customOptionEl.setAttribute("class", "select__option");
+
         customOptionsEl.appendChild(customOptionEl);
       });
 
+      customOptionsEl.addEventListener("click", (e) => {
+        for(item of e.path[1].children) {
+          item.setAttribute("class", "select__option");
+        }
+        e.target.setAttribute("class", "select__option select__option--selected");
+      });
+
       customSelectEl.appendChild(customOptionsEl);
+
+      customSelectEl.addEventListener("click", () =>{
+        selectIsOpened = !selectIsOpened;
+        
+        if(selectIsOpened) {
+          customSelectEl.setAttribute("class", "select select--opened");
+          return;
+        }
+
+        customSelectEl.setAttribute("class", "select");
+      });
     
       divEl.appendChild(selectEl);
       divEl.appendChild(customSelectEl);
