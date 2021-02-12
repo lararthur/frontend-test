@@ -1,4 +1,4 @@
-import Model from '../models/model';
+import Model from '../models/Model';
 
 import sunImg from '../../images/illustrations/sun.png';
 import waterImg from '../../images/illustrations/wateringcan.png';
@@ -6,10 +6,10 @@ import dogImg from '../../images/illustrations/dog.png';
 
 const modelInstace = new Model();
 
-class controller {
+class Controller {
   constructor(products) {
     this.products = products;
-
+    this.subscribrers = [];
     this.filters = [
       {
         name: "sun",
@@ -67,6 +67,14 @@ class controller {
     ];
   }
 
+  subscribe(subscriber) {
+    this.subscribrers.push(subscriber);
+  }
+
+  notify() {
+    this.subscribrers.map(subscriber => subscriber(this.products));
+  }
+
   getFilters() {
     return this.filters;
   }
@@ -75,19 +83,17 @@ class controller {
     this[name] = value;
 
     if((this.sun && this.sun !== '0') && (this.water && this.water !== '0') && (this.pets && this.pets !== '0')) {
-      this.products = modelInstace.fetchResults(
+      this.products = modelInstace.fetchProducts(
         this.sun,
         this.water,
         this.pets
       ).then(data => {
         this.products = data;
-
-        // notify
-        console.log(this.products);
+        this.notify();
       });
     }
 
   }
 }
 
-export default controller;
+export default Controller;

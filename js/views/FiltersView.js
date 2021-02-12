@@ -1,12 +1,13 @@
-import controller from '../controllers/controller';
+class FiltersView {
 
-const controllerInstance = new controller();
+  constructor(controllerInstance) {
+    this.controllerInstance = controllerInstance;
+  }
 
-class filtersView {
   renderFilters() {
-
     const filtersForm = document.querySelector("#filtersForm");
-    const filters = controllerInstance.getFilters();
+    const filters = this.controllerInstance.getFilters();
+
     let filtersOptions = [];
     
     filters.map((item, index) => {
@@ -25,7 +26,7 @@ class filtersView {
       divEl.appendChild(labelEl);
     
       const selectEl = document.createElement("select");
-      selectEl.addEventListener("change", (e) => controllerInstance.changeValue(item.name, e.target.value));
+      selectEl.addEventListener("change", (e) => this.controllerInstance.changeValue(item.name, e.target.value));
 
       const defaultOptionEl = document.createElement("option");
       defaultOptionEl.setAttribute("value", 0);
@@ -49,9 +50,8 @@ class filtersView {
     filtersOptions.map(filter => {
       filtersForm.appendChild(filter);
     });
-    
-
   }
+
 }
 
-export default filtersView;
+export default FiltersView;
