@@ -1,3 +1,5 @@
+import selectArrowImg from '../../images/icons/select-icon.svg';
+
 class FiltersView {
 
   constructor(controllerInstance) {
@@ -52,6 +54,12 @@ class FiltersView {
       customSelectTextEl.innerText = "Select...";
       customSelectEl.appendChild(customSelectTextEl);
       const customOptionsEl = document.createElement("div");
+
+      const selectArrow = document.createElement("img");
+      selectArrow.setAttribute("class", "select__arrow");
+      selectArrow.setAttribute("src", selectArrowImg);
+
+      customSelectEl.appendChild(selectArrow);
 
       // **CUSTOM** SELECT STYLING
       customSelectEl.setAttribute("class", "select");
