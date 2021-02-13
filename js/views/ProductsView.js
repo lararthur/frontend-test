@@ -62,27 +62,42 @@ class ProductsView {
 
       productImageWrapperEl.appendChild(productImageEl);
 
-      // PRODUCT TITLE
-      const productTitleEl = document.createElement("p");
-      productTitleEl.innerText = product.name;
-
-      productEl.appendChild(productTitleEl);
-
       // PRODUCT INFO BOX
       const productInfoEl = document.createElement("div");
       productInfoEl.setAttribute("class", "product__info");
 
       productEl.appendChild(productInfoEl);
 
+      // PRODUCT TITLE
+      const productTitleEl = document.createElement("p");
+      productTitleEl.innerText = product.name;
+
+      productInfoEl.appendChild(productTitleEl);
+
+      // PRODUCT INFO BOTTOM
+      const productInfoBottomEl = document.createElement("div");
+      productInfoBottomEl.setAttribute("class", "product__infoBottom");
+
+      productInfoEl.appendChild(productInfoBottomEl);
+
       // PRODUCT PRICE
       const productPriceEl = document.createElement("p");
       productPriceEl.setAttribute("class", "product__price");
       productPriceEl.innerText = "$" + product.price;
 
-      productInfoEl.appendChild(productPriceEl);
+      productInfoBottomEl.appendChild(productPriceEl);
 
       // PRODUCT TAGS
       const productTagsEl = document.createElement("div");
+
+      const petTagEl = document.createElement("img");
+      petTagEl.setAttribute("class", "product__tag");
+      if(product.toxicity) {
+        petTagEl.setAttribute("src", toxicity);
+      } else {
+        petTagEl.setAttribute("src", pet);
+      };
+      productTagsEl.appendChild(petTagEl);
       
       const sunTagEl = document.createElement("img");
       sunTagEl.setAttribute("class", "product__tag");
@@ -98,16 +113,7 @@ class ProductsView {
       if(product.water === "rarely") waterTagEl.setAttribute("src", rarely);
       productTagsEl.appendChild(waterTagEl);
 
-      const petTagEl = document.createElement("img");
-      petTagEl.setAttribute("class", "product__tag");
-      if(product.toxicity) {
-        petTagEl.setAttribute("src", toxicity);
-      } else {
-        petTagEl.setAttribute("src", pet);
-      };
-      productTagsEl.appendChild(petTagEl);
-
-      productInfoEl.appendChild(productTagsEl);
+      productInfoBottomEl.appendChild(productTagsEl);
 
       // INSERTING THE PRODUCT AT THE PICKS
       resultsPicks.appendChild(productEl);
