@@ -31,12 +31,14 @@ $lightergrey: #f6f6f6;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   width: 100%;
   color: $darkgreen;
   border: 1px solid $darkgreen;
   font-family: "Montserrat", sans-serif;
   border-radius: 23px;
+  background: #f6f6f6;
 
   &__icon {
     padding: 10px;
@@ -58,7 +60,7 @@ $lightergrey: #f6f6f6;
   &__options {
     display: none;
     position: absolute;
-    top: 49px;
+    top: 66px;
     left: 0;
     right: 0;
 
@@ -71,7 +73,8 @@ $lightergrey: #f6f6f6;
   &__option {
     padding: 15px 20px;
     margin: 0;
-    &--selected {
+    transition: color 0.3s ease, background 0.3s ease;
+    &--selected, &:hover {
       background: $lightgreen;
       color: $white;
     }
@@ -81,7 +84,7 @@ $lightergrey: #f6f6f6;
 
     .select {
       &__text {
-        border-radius: 20px 20px 0 0;
+        border-radius: 25px 25px 0 0;
         border-bottom: none;
       }
       &__options {
