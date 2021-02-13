@@ -2,6 +2,7 @@ class FiltersView {
 
   constructor(controllerInstance) {
     this.controllerInstance = controllerInstance;
+    this.selectIsOpenedFlags = [];
   }
 
   renderFilters() {
@@ -53,8 +54,6 @@ class FiltersView {
       const customOptionsEl = document.createElement("div");
 
       // **CUSTOM** SELECT STYLING
-      let selectIsOpened = false;
-
       customSelectEl.setAttribute("class", "select");
       customSelectTextEl.setAttribute("class", "select__text");
       customOptionsEl.setAttribute("class", "select__options");
@@ -82,23 +81,33 @@ class FiltersView {
       });
 
       customOptionsEl.addEventListener("click", (e) => {
-        for(item of e.path[1].children) {
-          item.setAttribute("class", "select__option");
+        for(let option of e.path[1].children) {
+          option.setAttribute("class", "select__option");
         }
         e.target.setAttribute("class", "select__option select__option--selected");
+
+        this.manageOpenedSelects(e);
       });
 
       customSelectEl.appendChild(customOptionsEl);
 
-      customSelectEl.addEventListener("click", () =>{
-        selectIsOpened = !selectIsOpened;
-        
-        if(selectIsOpened) {
-          customSelectEl.setAttribute("class", "select select--opened");
-          return;
-        }
+      this.selectIsOpenedFlags.push({name: item.name, isOpened: false});
 
-        customSelectEl.setAttribute("class", "select");
+      customSelectEl.addEventListener("click", (e) => {
+        const selectFlags = this.selectIsOpenedFlags.find(flag => flag.name === item.name);
+        
+        this.manageOpenedSelects(e);
+  
+        if(selectFlags.isOpened) {
+          return customSelectEl.setAttribute("class", "select");
+        }
+        customSelectEl.setAttribute("class", "select select--opened");
+
+        this.selectIsOpenedFlags = this.selectIsOpenedFlags.map(flag => {
+          if (flag.name === item.name) return {name: flag.name, isOpened: !flag.isOpened}
+          return flag;
+        });
+
       });
     
       divEl.appendChild(selectEl);
@@ -109,6 +118,18 @@ class FiltersView {
     
     filtersOptions.map(filter => {
       filtersForm.appendChild(filter);
+    });
+  }
+
+  manageOpenedSelects(e) {
+    e.stopPropagation();
+    const selectsNodeList = document.querySelectorAll('.select');
+    const select = [...selectsNodeList];
+
+    select.map(select => select.setAttribute("class", "select"));
+
+    this.selectIsOpenedFlags = this.selectIsOpenedFlags.map(flag => {
+      return {name: flag.name, isOpened: false}
     });
   }
 
