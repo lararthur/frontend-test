@@ -48,8 +48,6 @@ class ProductsView {
 
     this.products = [...favorites, ...otherProducts];
 
-    console.log(favorites);
-
     this.products.map((product, index) => {
       // PRODUCT DIV
       const productEl = document.createElement("div");
@@ -61,7 +59,20 @@ class ProductsView {
       }
       productEl.setAttribute("class", productClass);
 
-      // PRODUCT WRAPPER
+      // STAFF FAVORITE TAG
+      if(product.staff_favorite) {
+        const staffFavEl = document.createElement("div");
+        staffFavEl.setAttribute("class", "product__staffFav");
+
+        const staffFavTextEl = document.createElement("p");
+        staffFavTextEl.setAttribute("class", "product__staffFavText");
+        staffFavTextEl.innerText = "Staff favorite";
+
+        staffFavEl.appendChild(staffFavTextEl);
+        productEl.appendChild(staffFavEl);
+      }
+
+      // PRODUCT IMAGE WRAPPER
       const productImageWrapperEl = document.createElement("div");
       productImageWrapperEl.setAttribute("class", "product__imageWrapper");
 
