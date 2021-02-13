@@ -70,6 +70,7 @@ class ProductsView {
 
       // PRODUCT TITLE
       const productTitleEl = document.createElement("p");
+      productTitleEl.setAttribute("class", "product__title");
       productTitleEl.innerText = product.name;
 
       productInfoEl.appendChild(productTitleEl);
