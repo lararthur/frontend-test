@@ -15,7 +15,7 @@ $lightergrey: #f6f6f6;
 // GLOBAL CLASSES
 .wrapper {
   padding: 35px;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -91,4 +91,10 @@ $lightergrey: #f6f6f6;
     }
   }
   
+}
+
+.form {
+  @media (min-width: 768px) {
+    display: flex;
+  }
 }

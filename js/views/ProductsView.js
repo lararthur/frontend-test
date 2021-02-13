@@ -35,6 +35,8 @@ class ProductsView {
 
     resultsPicks.innerHTML = '';
 
+    console.log(this.products);
+
     this.products.map(product => {
       // PRODUCT DIV
       const productEl = document.createElement("div");
