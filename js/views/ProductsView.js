@@ -47,6 +47,12 @@ class ProductsView {
         productClass = "product"
       }
       productEl.setAttribute("class", productClass);
+
+      // PRODUCT WRAPPER
+      const productImageWrapperEl = document.createElement("div");
+      productImageWrapperEl.setAttribute("class", "product__imageWrapper");
+
+      productEl.appendChild(productImageWrapperEl);
   
       // PRODUCT IMAGE
       const productImageEl = document.createElement("img");
@@ -54,7 +60,7 @@ class ProductsView {
       productImageEl.setAttribute("src", product.url);
       productImageEl.setAttribute("alt", product.name);
 
-      productEl.appendChild(productImageEl);
+      productImageWrapperEl.appendChild(productImageEl);
 
       // PRODUCT TITLE
       const productTitleEl = document.createElement("p");
