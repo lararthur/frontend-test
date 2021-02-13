@@ -9,3 +9,8 @@ const productsViewInstance = new ProductsView(controllerInstance);
 
 filtersViewInstance.renderFilters();
 productsViewInstance.renderProducts();
+
+const buttonToTop = document.querySelector("#toTop");
+buttonToTop.addEventListener("click", () => {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
